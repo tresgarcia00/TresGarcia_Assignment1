@@ -1,0 +1,55 @@
+// Prime loop class example//
+// Count the number of primes until you get to the 1,000th prime//
+// This is the difference between a for loop vs while loop //
+// We know the stopping point, but don't know the number. How to find the 1,000th prime?//
+
+// isX should trigger Boolian (
+// 2x arguments: output is Boolian
+
+function isPrime(intiger) {
+
+    if (intiger % 2 === 0) {
+        return false
+    }
+
+    // We want to loop the exact number of times until we get to the 1,000th prime.
+    // We do not want to check 0 or 1.
+    // 7 % 0 = impossible
+    // 7 % 1 -->0       1 * 7 + 0 = 7   *definition: Fundamental arithmetic to be wrong
+    // 7 % 2 -->1       2 * 3 + 1 = 7
+    // 7 % 3 -->1       4 * 1 + 3 = 7
+    // 7 % 4 -->3       4 * 1 + 3 = 7
+    // 7 % 5 -->2       5 * 1 + 2 = 7
+    // 7 % 7 -->0       7 * 1 + 0 = 7   * you don't want to check if the # is divisible by it self. So no >=
+
+
+    for (var i = 2; i < intiger; i++) {
+        if (intiger % i === 0) {
+            return false;
+        }
+    }
+    if (intiger <= 1){
+        return false;
+    }
+    return true;
+
+}
+
+// test
+console.log(2, isPrime(2));
+console.log(3, isPrime(3));
+console.log(4, isPrime(4));
+console.log(-7, isPrime(-7));
+console.log(1, isPrime(1));
+
+   var count = 0;
+    for (var j = 0; j < 10000; j++) {
+        if (isPrime(j)) {
+            count++;
+    }
+    if (count === 1000){
+            console.log('1,000th prime:' , j)
+        break;
+    }
+}
+console.log('count:', count);
